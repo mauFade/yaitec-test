@@ -7,6 +7,7 @@ import DialogPortal from "@/components/dialog-portal";
 export default function Home() {
   const [selectedTopics, setSelectedTopics] = useState<string[]>([]);
   const [clicked, setClicked] = useState<boolean>(false);
+  const [newstellerId, setNewstellerId] = useState<string>("");
 
   const handleToggleOption = (option: string, checked: boolean) => {
     setSelectedTopics((prev) =>
@@ -34,11 +35,14 @@ export default function Home() {
             topics={selectedTopics}
             setTopics={setSelectedTopics}
             setClicked={setClicked}
+            setNewstellerId={setNewstellerId}
           />
         </Dialog.Root>
       </main>
 
-      {clicked && <div className="bg-zinc-800 p-4 rounded-md">CLICOU</div>}
+      {clicked && (
+        <div className="bg-zinc-800 p-4 rounded-md">CLICOU, {newstellerId}</div>
+      )}
     </div>
   );
 }

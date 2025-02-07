@@ -9,6 +9,7 @@ interface PropsInterface {
   topics: string[];
   setTopics: Dispatch<SetStateAction<string[]>>;
   setClicked: Dispatch<SetStateAction<boolean>>;
+  setNewstellerId: Dispatch<SetStateAction<string>>;
   handleToggle: (option: string, checked: boolean) => void;
 }
 
@@ -27,7 +28,7 @@ const DialogPortal = (props: PropsInterface) => {
   const mutation = useMutation({
     mutationFn: api.postNewstellerTopics,
     onSuccess: async (data) => {
-      console.log({ data });
+      props.setNewstellerId(data.task_id);
     },
   });
 
