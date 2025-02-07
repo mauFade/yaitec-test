@@ -2,6 +2,8 @@ import * as Dialog from "@radix-ui/react-dialog";
 import * as Checkbox from "@radix-ui/react-checkbox";
 import { X, Check } from "lucide-react";
 import { Dispatch, SetStateAction } from "react";
+import { useMutation } from "@tanstack/react-query";
+import { api } from "@/api/api";
 
 interface PropsInterface {
   topics: string[];
@@ -22,8 +24,20 @@ const OPTIONS = [
 ];
 
 const DialogPortal = (props: PropsInterface) => {
+  const mutation = useMutation({
+    mutationFn: api.postNewstellerTopics,
+    onSuccess: async (data) => {
+      console.log({ data });
+    },
+  });
+
   const handleClick = () => {
     console.log({ topics: props.topics, language: "pt" });
+
+    mutation.mutate({
+      language: "pt",
+      topics: props.topics,
+    });
 
     props.setTopics([]);
     props.setClicked(true);

@@ -1,3 +1,4 @@
+import axios from "axios";
 import {
   NewstellerStatusResponse,
   TopicRequestInterface,
@@ -8,38 +9,44 @@ class Api {
   public async postNewstellerTopics(
     data: TopicRequestInterface
   ): Promise<TopicResponseInterface> {
-    const httpUrl = "http://74.179.83.201:8000/generate-newsletter";
-
-    const response = await fetch(httpUrl, {
-      method: "POST",
-      body: JSON.stringify({
-        ...data,
-      }),
+    const axiosInstance = axios.create({
+      baseURL: process.env.NEXT_PUBLIC_API_BASE_URL,
       headers: {
-        "Content-type": "application/json; charset=UTF-8",
+        Accept: "application/json",
+        Authorization: `Bearer ${process.env.NEXT_PUBLIC_API_TOKEN}`,
+        "Content-Type": "multipart/form-data",
       },
     });
 
-    const r = await response.json();
+    const formData = new FormData();
+    formData.append("topics", data.topics.join(","));
+    formData.append("language", data.language);
 
-    return r;
+    const response = await axiosInstance.post<TopicResponseInterface>(
+      "/generate-newsletter",
+      formData
+    );
+
+    console.log({ data: response.data });
+    return response.data;
   }
 
   public async getNewstellerStatus(
     id: string
   ): Promise<NewstellerStatusResponse> {
-    const httpUrl = "http://74.179.83.201:8000/topics/" + id;
-
-    const response = await fetch(httpUrl, {
-      method: "GET",
+    const axiosInstance = axios.create({
+      baseURL: process.env.NEXT_PUBLIC_API_BASE_URL,
       headers: {
-        "Content-type": "application/json; charset=UTF-8",
+        Accept: "application/json",
+        Authorization: `Bearer ${process.env.NEXT_PUBLIC_API_TOKEN}`,
+        "Content-Type": "multipart/form-data",
       },
     });
 
-    const r = await response.json();
-
-    return r;
+    const response = await axiosInstance.get<NewstellerStatusResponse>(
+      `/topics/${id}`
+    );
+    return response.data;
   }
 }
 
