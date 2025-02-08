@@ -2,6 +2,8 @@
 
 #### É necessária a chave de autenticação da API para o mesmo funcionar
 
+#### Link de explicação do mesmo no YouTube: https://youtu.be/EpTPVEa9DKQ
+
 Então, use o servidor local:
 
 ```bash
