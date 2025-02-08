@@ -31,7 +31,7 @@ const NewstellerStatus = (props: PropsInterface) => {
   }
 
   return (
-    <div className="bg-zinc-800 text-white rounded-lg p-6 max-w-md">
+    <div className="bg-zinc-800 rounded-lg p-6 max-w-md">
       {isLoading ? (
         <div className="flex justify-center items-center">
           <AiOutlineLoading className="text-4xl text-zinc-500 animate-spin" />
@@ -42,8 +42,7 @@ const NewstellerStatus = (props: PropsInterface) => {
             Status da Newsletter
           </h2>
           <p className="text-center text-zinc-400 mb-2">
-            Status:{" "}
-            <span className="text-white font-semibold">{data?.status}</span>
+            Status: <span className="font-semibold">{data?.status}</span>
           </p>
           {data?.result && (
             <div className="bg-zinc-700 p-4 rounded mt-4">

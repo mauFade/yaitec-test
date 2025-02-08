@@ -14,14 +14,13 @@ interface PropsInterface {
 }
 
 const OPTIONS = [
-  "Inteligência artificial",
-  "Mudanças climáticas",
-  "Tecnologia",
-  "Finanças",
-  "Saúde",
-  "Entretenimento",
-  "Esportes",
-  "Educação",
+  "Artificial Intelligence",
+  "Climate Change",
+  "Technology",
+  "Finances",
+  "Health",
+  "Sports",
+  "Education",
 ];
 
 const DialogPortal = (props: PropsInterface) => {
