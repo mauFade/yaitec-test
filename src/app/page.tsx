@@ -3,6 +3,7 @@
 import { useState } from "react";
 import * as Dialog from "@radix-ui/react-dialog";
 import DialogPortal from "@/components/dialog-portal";
+import NewstellerStatus from "@/components/newsteller-status";
 
 export default function Home() {
   const [selectedTopics, setSelectedTopics] = useState<string[]>([]);
@@ -16,7 +17,7 @@ export default function Home() {
   };
 
   return (
-    <div className="bg-gradient-to-br from-zinc-900 to-zinc-950 min-h-screen flex flex-col space-y-6 justify-center items-center">
+    <div className="bg-gradient-to-br from-zinc-900 to-zinc-950 min-h-screen flex flex-col space-y-6 justify-center items-center py-6">
       <main className="bg-zinc-800 p-4 rounded-md">
         <h1 className="font-bold">Newsteller</h1>
         <h2 className="font-semibold">
@@ -40,8 +41,8 @@ export default function Home() {
         </Dialog.Root>
       </main>
 
-      {clicked && (
-        <div className="bg-zinc-800 p-4 rounded-md">CLICOU, {newstellerId}</div>
+      {clicked && newstellerId.length && (
+        <NewstellerStatus newstellerId={newstellerId} />
       )}
     </div>
   );

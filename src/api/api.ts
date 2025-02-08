@@ -27,7 +27,6 @@ class Api {
       formData
     );
 
-    console.log({ data: response.data });
     return response.data;
   }
 
@@ -44,8 +43,9 @@ class Api {
     });
 
     const response = await axiosInstance.get<NewstellerStatusResponse>(
-      `/topics/${id}`
+      `/tasks/${id}`
     );
+
     return response.data;
   }
 }
