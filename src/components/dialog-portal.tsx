@@ -32,8 +32,6 @@ const DialogPortal = (props: PropsInterface) => {
   });
 
   const handleClick = () => {
-    console.log({ topics: props.topics, language: "pt" });
-
     mutation.mutate({
       language: "pt",
       topics: props.topics,

@@ -9,7 +9,6 @@ interface PropsInterface {
 }
 let shouldQuery = true;
 const fetchSessions = async (id: string) => {
-  console.log({ shouldQuery });
   const response = await api.getNewstellerStatus(id);
   return response;
 };
